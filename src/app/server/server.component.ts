@@ -1,49 +1,24 @@
-import { Component }
 
 @Component
 import { Component } from '@angular/core';
 
 @Component({
 	selector: 'app-server',
-//	templateUrl: '<app-server></app-server><app-server></app-server>',
 	templateUrl¸: './server.component.html',
-	styleUrl: ['./app.component.css'],
-	styles: [`
-		h3 {
-			color: red;
-		}
-	`]
-})
-//export class ServerComponent {
-//	serverId: number = 10;
-//	serverStatus: string = 'offline';
 
-//	getServerStatus() {
-//		return this.serverStatus;
-//	}
-//}
-
-export class ServerComponent implements OnInit {
-	allowNewServer = false;
-	serverCreationStatus = 'No server was created!';
-	serverName = "Testserver";
-	serverCreated = false;
+export class ServerComponent {
+	serverId: number = 10;
+	serverStatus: string = 'offline';
 
 	constructor() {
-		setTimeout(() => {
-			this.allowNewServer = true;
-		}, 2000);
+		this.serverStatus = Math.random() > .5 ? 'online' : 'offline' //if number > 0.5, server is online, if not, it is offline
 	}
 
-	ngOnInit() {
+	getServerStatus() {
+		return this.serverStatus;
 	}
 
-	onCreateServer() {
-		this.serverCreated = true;
-		this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
-	}
-
-	onUpdateServerName(event: any) {
-		console.log(event) = (<HTMLInputElement>event.target).value;
+	getColor() {
+		return this.serverStatus === 'online' ? 'green' : 'red';
 	}
 }
