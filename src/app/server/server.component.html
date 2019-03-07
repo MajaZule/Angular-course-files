@@ -1,6 +1,11 @@
 
-<p [ngStyle]>{{ 'Server' }} with ID {{ serverId }} is {{ getserverStatus() }}</p> 
+<p 
+	[ngStyle]="{backgroundColor: getColor()}"
+	[ngClass]="{online: serverStatus === 'online'}">
+	{{ 'Server' }} with ID {{ serverId }} is {{ getserverStatus() }}
+</p> 
+
 <!-- [] indicate that we want to bind to some propery on this directive and this property
 	name is ngStyle. Binding to a property of a directive. -->
 
-
+<!-- [ngClass]: if this is online we should attach the css classonline to this paragraph; otherwise not -->
